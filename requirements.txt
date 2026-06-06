@@ -1,0 +1,2 @@
+# tomli is required for Python < 3.11 to parse TOML config files
+tomli >= 2.0.0 ; python_version < '3.11'

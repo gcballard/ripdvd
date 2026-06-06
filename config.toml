@@ -1,0 +1,25 @@
+# MakeMKV DVD Ripper Configuration
+
+[makemkv]
+# Path to makemkvcon executable. Use "makemkvcon" if in PATH, or absolute path.
+path = "C:\\Program Files (x86)\\MakeMKV\\makemkvcon64.exe"
+# Drive index (0 for first drive, 1 for second, etc.)
+drive = 0
+
+[output]
+# Directory where .mkv files will be saved. Can use ~ for home directory.
+directory = "n:/Videos"
+
+[rip]
+# Minimum duration (in seconds) for a title to be ripped. Default 1800 = 30 minutes.
+min_duration_seconds = 1800
+# Poll interval (in seconds) for disc detection. Default 10.
+poll_interval_seconds = 10
+# Query timeout (in seconds) for makemkvcon disc queries. Increase if copy protection causes timeouts. Default 60.
+query_timeout_seconds = 300
+
+[logging]
+# Path to log file. Can use ~ for home directory.
+log_file = "rip.log"
+# Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+log_level = "INFO"
