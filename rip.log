@@ -4393,3 +4393,20 @@ SINFO:0,5,42,5087,"( Lossy conversion )"
 2026-05-17 08:08:25 [WARNING] [DETECT] No TINFO lines found in makemkvcon output
 2026-05-17 08:08:25 [WARNING] No valid titles with duration found
 2026-05-17 08:09:12 [WARNING] makemkvcon query failed (drive 0): Command failed. MakeMKV said: MakeMKV v1.18.3 win(x64-release) started
+2026-07-04 11:19:52 [WARNING] Removing stale lock file: C:\Users\Grant\OneDrive\repos\ripdvd\rip.0.lock
+2026-07-04 11:19:52 [INFO] MakeMKV Ripper started
+2026-07-04 11:19:52 [INFO] Using drive index: 0
+2026-07-04 11:19:52 [INFO] Using makemkvcon: C:\Program Files (x86)\MakeMKV\makemkvcon64.exe
+2026-07-04 11:19:52 [INFO] Output directory: N:\Videos
+2026-07-04 11:19:52 [INFO] Minimum duration: 1800 seconds
+2026-07-04 11:19:52 [INFO] Poll interval: 10 seconds
+2026-07-04 11:19:52 [INFO] Checking for DVD disc on drive 0...
+2026-07-04 11:22:01 [INFO] [DETECT] Found 45 TINFO lines, 3 with duration info
+2026-07-04 11:22:01 [INFO] Disc detected: Title 0: 141m29s, Title 1: 29m37s, Title 2: 75m53s
+2026-07-04 11:22:01 [INFO] Disc detected with 3 total titles
+2026-07-04 11:24:08 [INFO] [DETECT] Found 45 TINFO lines, 3 with duration info
+2026-07-04 11:24:08 [INFO] Disc detected: Title 0: 141m29s, Title 1: 29m37s, Title 2: 75m53s
+2026-07-04 11:24:08 [INFO] Found 3 titles on disc
+2026-07-04 11:24:08 [INFO] 2 titles meet duration threshold
+2026-07-04 11:26:14 [INFO] Output directory: N:\Videos\Gettysburg_20260704_112614
+2026-07-04 11:26:14 [INFO] Starting rip of title 0...
