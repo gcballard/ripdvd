@@ -27,7 +27,7 @@ rip.py [options]
 | `--config FILE` | Path to config file (default: `config.toml`) |
 | `--output DIR` | Output directory (overrides config) |
 | `--min-duration SECONDS` | Minimum title duration in seconds (overrides config) |
-| `--drive INDEX` | Drive index 0, 1, 2, etc. (overrides config) |
+| `--drive INDEX` | Drive index 0, 1, 2, etc. (overrides config). On Linux, index N maps to `/dev/srN` (e.g. `--drive 1` uses `/dev/sr1`) |
 | `--makemkvcon-path PATH` | Path to makemkvcon executable (overrides config) |
 | `--debug` | Enable debug output |
 
@@ -49,8 +49,26 @@ rip.py --min-duration 900
 # Rip from second drive with verbose output
 rip.py --drive 1 --debug
 
+# Rip from two drives at once (one instance per drive)
+rip.py --drive 0 --output ~/Videos/rips &
+rip.py --drive 1 --output ~/Videos/rips &
+
 # Specify a non-default makemkvcon path
 rip.py --makemkvcon-path "/opt/makemkv/bin/makemkvcon"
+```
+
+## Drives
+
+Drive index N maps to `/dev/srN` on Linux (`--drive 0` uses `/dev/sr0`,
+`--drive 1` uses `/dev/sr1`). The lock file is per-drive (`rip.N.lock`), so
+run one instance per drive to rip from multiple drives simultaneously — each
+disc is saved to its own `{label}_{timestamp}/` subfolder, so sharing one
+output directory is safe.
+
+List your drives with:
+
+```sh
+makemkvcon -r info | grep '^DRV:'
 ```
 
 ## Configuration
@@ -59,11 +77,11 @@ See `config.toml` for all settings. CLI flags override config file values.
 
 ```toml
 [makemkv]
-path = "C:\\Program Files (x86)\\MakeMKV\\makemkvcon64.exe"
+path = "makemkvcon"
 drive = 0
 
 [output]
-directory = "n:/Videos"
+directory = "~/Videos/rips"
 
 [rip]
 min_duration_seconds = 1800

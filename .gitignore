@@ -1,0 +1,9 @@
+# Per-drive instance lock files
+rip.*.lock
+
+# Logs
+rip.log
+
+# Python
+__pycache__/
+*.pyc

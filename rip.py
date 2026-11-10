@@ -517,10 +517,12 @@ class MakeMKVRipper:
             system = platform.system()
             
             if system == "Linux":
-                # Use eject command
-                result = subprocess.run(["eject"], capture_output=True)
+                # Use eject command with the explicit device so multi-drive
+                # setups eject the right tray (drive 0 -> /dev/sr0, etc.)
+                device = f"/dev/sr{self._get_drive_index()}"
+                result = subprocess.run(["eject", device], capture_output=True)
                 if result.returncode == 0:
-                    self.logger.info("Disc ejected successfully")
+                    self.logger.info(f"Disc ejected successfully ({device})")
                     return True
             
             elif system == "Windows":
@@ -718,6 +720,12 @@ Examples:
   rip.py --config custom.toml     # Use custom config file
   rip.py --output ~/MyRips        # Override output directory
   rip.py --min-duration 900       # Only rip titles >= 15 minutes
+  rip.py --drive 1                # Rip from second drive (/dev/sr1 on Linux)
+  rip.py --drive 1 --debug        # Second drive with verbose output
+
+Drive mapping (Linux): drive index N corresponds to /dev/srN
+(e.g. --drive 0 uses /dev/sr0). Run one instance per drive to
+rip from multiple drives at once.
         """
     )
     
@@ -740,7 +748,7 @@ Examples:
     parser.add_argument(
         "--drive",
         type=int,
-        help="Drive index 0, 1, 2, etc. (overrides config)"
+        help="Drive index 0, 1, 2, etc. (overrides config). On Linux, index N maps to /dev/srN"
     )
     parser.add_argument(
         "--makemkvcon-path",
